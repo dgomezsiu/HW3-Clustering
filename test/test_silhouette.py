@@ -2,7 +2,7 @@
 import numpy as np
 from cluster import KMeans, make_clusters, Silhouette
 import pytest
-# import scikit-learn
+from sklearn.metrics import silhouette_score
 
 #test silhouette scores range
 def test_clusters():
@@ -14,3 +14,4 @@ def test_clusters():
     assert len(np.unique(predictions)) == 5
     assert max(scores) <= 1
     assert min(scores) >= -1
+
