@@ -1,3 +1,5 @@
+![](https://github.com/dgomezsiu/HW3-Clustering/workflows/kmeans/badge.svg)
+
 # Assignment 3
 Implementation of KMeans and Silhouette Scoring
 
