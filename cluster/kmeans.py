@@ -50,6 +50,35 @@ class KMeans:
                 A 2D matrix where the rows are observations and columns are features
         """
 
+        # assign number of observations and features from shape of input matrix
+        self.observations, self.features = mat.shape
+
+        # if the number of clusters is greater than number of observations, error
+        if self.k > self.observations: raise Exception("number of clusters exceeds number of observations")
+
+        # start at k random points in observations for centroid
+        self.centroids = mat[np.random.choice(self.observations, self.k, replace = False)]
+
+        # initialize prediction matrix
+        self.predicted_labels = np.zeroes((self.observations, 1))
+
+        # initialize iterator tracker at 0 and error at inf
+        iter = 0
+        error = np.inf
+
+        # loop through to minimize error while number of iterations is below max iter and error is above tolerance
+        while iter < self.max_iter and error > self.tol:
+            # assign predicted labels
+            self.predicted_labels = self.predict(mat)
+            # store previous centroids and update centroids
+            self.previous_centroids = self.centroids
+            self.centroids = self.get_centroids(mat)
+            # update the error and iterator
+            error = self.get_error()
+            i += 1
+
+
+
     def predict(self, mat: np.ndarray) -> np.ndarray:
         """
         Predicts the cluster labels for a provided matrix of data points--
@@ -67,6 +96,10 @@ class KMeans:
                 a 1D array with the cluster label for each of the observations in `mat`
         """
 
+        # use Euclidian distance between a point and the closest centroid. take the minimum
+        return np.argmin(cdist(mat, self.centroids, metric = 'euclidian'), axis = 1)
+
+
     def get_error(self) -> float:
         """
         Returns the final squared-mean error of the fit model. You can either do this by storing the
@@ -77,6 +110,9 @@ class KMeans:
                 the squared-mean error of the fit model
         """
 
+        # returns the sum of the square mean error of the previous centroids and current centroids
+        return np.sum(np.square(self.previous_centroids - self.centroids))
+
     def get_centroids(self) -> np.ndarray:
         """
         Returns the centroid locations of the fit model.
@@ -85,3 +121,12 @@ class KMeans:
             np.ndarray
                 a `k x m` 2D matrix representing the cluster centroids of the fit model
         """
+
+        # initialize centroid matrix shape k, features
+        fit_centroids = np.zeroes((self.k, self.features))
+
+        # for each cluster, return the average of the poitns at each label
+        for cluster in range(self.k):
+            fit_centroids[cluster, :] = np.mean(mat[cluster == self.predicted_labels, :], axis = 0)
+
+        return fit_centroids
