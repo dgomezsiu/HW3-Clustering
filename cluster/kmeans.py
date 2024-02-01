@@ -97,7 +97,7 @@ class KMeans:
         """
 
         # use Euclidian distance between a point and the closest centroid. take the minimum
-        return np.argmin(cdist(mat, self.centroids, metric = 'euclidian'), axis = 1)
+        return np.argmin(cdist(mat, self.centroids, metric = 'euclidean'), axis = 1)
 
 
     def get_error(self) -> float:
