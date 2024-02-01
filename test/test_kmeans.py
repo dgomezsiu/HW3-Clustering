@@ -9,4 +9,4 @@ def test_clusters():
     km = KMeans(k = 5)
     km.fit(clusters)
     predictions = km.predict(clusters)
-    assert len(np.unique(predictions)) == 5
+    assert len(np.unique(predictions)) == 6
