@@ -2,7 +2,7 @@
 import numpy as np
 from cluster import KMeans, make_clusters
 import pytest
-import sklearn
+import scikit-learn
 
 #test silhouette scores range
 def test_clusters():
