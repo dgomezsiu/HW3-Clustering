@@ -3,6 +3,7 @@ import numpy as np
 from cluster import KMeans, make_clusters, Silhouette
 import pytest
 from sklearn.metrics import silhouette_score
+import math
 
 #test silhouette scores range
 def test_clusters():
@@ -24,4 +25,4 @@ def test_score():
     scores = Silhouette().score(clusters, predictions)
     averaged_score = float(sum(scores) / len(scores))
     sklearn_score = silhouette_score(clusters, np.ravel(predictions))
-    assert (averaged_score + sklearn_score) == 2
+    assert math.isclose(averaged_score, sklearn_score, rel_tol = 0.1)
