@@ -55,7 +55,7 @@ class Silhouette:
             distances = np.full(this_cluster.shape[0], np.inf)
             #take the smallest average distance for each point to other cluster
             for inter_cluster in np.unique(other_clusters):
-                that_cluster = X[inter_cluster = y]
+                that_cluster = X[inter_cluster == y]
                 inter_distance = cdist(this_cluster, that_cluster, metric = 'euclidean')
                 average_distances_per_cluster = np.mean(inter_distance, axis = 1)
                 distances = np.minimum(average_distances_per_cluster, distances)
