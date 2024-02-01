@@ -15,3 +15,13 @@ def test_clusters():
     assert max(scores) <= 1
     assert min(scores) >= -1
 
+#test sklearn silhouette scores
+def test_score():
+    clusters, labels = make_clusters(k = 5, scale = 1, seed = 10)
+    km = KMeans(k = 5)
+    km.fit(clusters)
+    predictions = km.predict(clusters)
+    scores = Silhouette().score(clusters, predictions)
+    averaged_score = float(sum(scores) / len(scores))
+    sklearn_score = silhouette_score(clusters, np.flatten(predictions))
+    assert averaged_score + sklearn_score
