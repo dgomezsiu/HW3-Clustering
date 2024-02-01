@@ -21,6 +21,19 @@ class KMeans:
                 the maximum number of iterations before quitting model fit
         """
 
+        #doing the basic error handling
+
+        # if k is not positive, error
+        if k <= 0: raise Exception("k must be positive")
+
+        # if k is not an integer, error
+        if type(k) != int: raise Exception("k must be an integer")
+
+        # initialize attributes for the class
+        self.k = k
+        self.tol = tol
+        self.max_iter = max_iter
+
     def fit(self, mat: np.ndarray):
         """
         Fits the kmeans algorithm onto a provided 2D matrix.
