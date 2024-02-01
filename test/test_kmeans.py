@@ -11,8 +11,14 @@ def test_clusters():
     predictions = km.predict(clusters)
     assert len(np.unique(predictions)) == 5
 
+#test exception raise for inappropriate k
 def test_assert_kmeans():
     with pytest.raises(Exception) as Error:
         km = KMeans(k = 0)
     
     assert "k must be positive" in str(Error.value)
+
+    with pytest.rasies(Exception) as Error:
+        km = KMeans(k = "0")
+
+    assert "k must be an integer" in str(Error.value)
