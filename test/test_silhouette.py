@@ -7,7 +7,7 @@ from sklearn.metrics import silhouette_score
 #test silhouette scores range
 def test_clusters():
     clusters, labels = make_clusters(k = 9, scale = 1, seed = 13)
-    km = KMeans(k = 5)
+    km = KMeans(k = 9)
     km.fit(clusters)
     predictions = km.predict(clusters)
     scores = Silhouette().score(clusters, predictions)
