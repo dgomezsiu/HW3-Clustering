@@ -61,4 +61,4 @@ class Silhouette:
                 distances = np.minimum(average_distances_per_cluster, distances)
             
             inter_dist[indices] = distances
-        return (inter_dist - intra_dist) / (np.max(inter_dist, intra_dist))
+        return (inter_dist - intra_dist) / (np.maximum(inter_dist, intra_dist))
