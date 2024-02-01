@@ -1,6 +1,6 @@
 # write your silhouette score unit tests here
 import numpy as np
-from cluster import KMeans, make_clusters, silhouette
+from cluster import KMeans, make_clusters, Silhouette
 import pytest
 # import scikit-learn
 
