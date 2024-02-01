@@ -113,7 +113,7 @@ class KMeans:
         # returns the sum of the square mean error of the previous centroids and current centroids
         return np.sum(np.square(self.previous_centroids - self.centroids))
 
-    def get_centroids(self) -> np.ndarray:
+    def get_centroids(self, mat: np.ndarray) -> np.ndarray:
         """
         Returns the centroid locations of the fit model.
 
