@@ -9,4 +9,10 @@ def test_clusters():
     km = KMeans(k = 5)
     km.fit(clusters)
     predictions = km.predict(clusters)
-    assert len(np.unique(predictions)) == 6
+    assert len(np.unique(predictions)) == 5
+
+def test_assert_kmeans():
+    with pytest.raises(Exception) as Error:
+        km = Kmeans(k = 0)
+    
+    assert "k must be positive" in str(Error.value)
