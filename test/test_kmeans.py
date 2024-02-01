@@ -18,7 +18,7 @@ def test_assert_kmeans():
     
     assert "k must be positive" in str(Error.value)
 
-    with pytest.rasies(Exception) as Error:
+    with pytest.raises(Exception) as Error:
         km = KMeans(k = "0")
 
     assert "k must be an integer" in str(Error.value)
