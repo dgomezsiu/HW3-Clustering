@@ -23,5 +23,5 @@ def test_score():
     predictions = km.predict(clusters)
     scores = Silhouette().score(clusters, predictions)
     averaged_score = float(sum(scores) / len(scores))
-    sklearn_score = silhouette_score(clusters, np.flatten(predictions))
+    sklearn_score = silhouette_score(clusters, np.ravel(predictions))
     assert averaged_score + sklearn_score
