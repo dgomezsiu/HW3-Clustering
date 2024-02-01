@@ -17,11 +17,12 @@ def test_clusters():
 
 #test sklearn silhouette scores
 def test_score():
-    clusters, labels = make_clusters(k = 5, scale = 1, seed = 10)
+    clusters, labels = make_clusters(k = 6, scale = 1, seed = 12)
     km = KMeans(k = 5)
     km.fit(clusters)
     predictions = km.predict(clusters)
     scores = Silhouette().score(clusters, predictions)
     averaged_score = float(sum(scores) / len(scores))
     sklearn_score = silhouette_score(clusters, np.ravel(predictions))
+    #with a tolerance of 10%, are the scores close
     assert np.isclose(averaged_score, sklearn_score, rtol = 0.1)
