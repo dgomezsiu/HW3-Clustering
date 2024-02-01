@@ -13,6 +13,6 @@ def test_clusters():
 
 def test_assert_kmeans():
     with pytest.raises(Exception) as Error:
-        km = Kmeans(k = 0)
+        km = KMeans(k = 0)
     
     assert "k must be positive" in str(Error.value)
