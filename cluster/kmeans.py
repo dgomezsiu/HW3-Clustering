@@ -23,11 +23,11 @@ class KMeans:
 
         #doing the basic error handling
 
-        # if k is not positive, error
-        if k <= 0: raise Exception("k must be positive")
-
         # if k is not an integer, error
         if type(k) != int: raise Exception("k must be an integer")
+
+        # if k is not positive, error
+        if k <= 0: raise Exception("k must be positive")
 
         # initialize attributes for the class
         self.k = k
