@@ -60,7 +60,7 @@ class KMeans:
         self.centroids = mat[np.random.choice(self.observations, self.k, replace = False)]
 
         # initialize prediction matrix
-        self.predicted_labels = np.zeroes((self.observations, 1))
+        self.predicted_labels = np.zeros((self.observations, 1))
 
         # initialize iterator tracker at 0 and error at inf
         iter = 0
@@ -123,7 +123,7 @@ class KMeans:
         """
 
         # initialize centroid matrix shape k, features
-        fit_centroids = np.zeroes((self.k, self.features))
+        fit_centroids = np.zeros((self.k, self.features))
 
         # for each cluster, return the average of the poitns at each label
         for cluster in range(self.k):

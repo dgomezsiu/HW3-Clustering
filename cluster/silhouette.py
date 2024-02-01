@@ -33,7 +33,7 @@ class Silhouette:
         # find the intra cluster distance
         count_observations, count_labels = X.shape
         # initialize an array to store intra cluster disatnces for each observation
-        intra_dist = np.zeroes(count_observations)
+        intra_dist = np.zeros(count_observations)
 
         # for every label calculate cdist
         for cluster in np.unique(labels):
@@ -45,7 +45,7 @@ class Silhouette:
             intra_dist[indices] = np.sum(distances, axis = 1) / (distances.shape[0] - 1)
 
         # find inter cluster distances from a point to other clusters
-        inter_dist = np.zeroes(count_observations)
+        inter_dist = np.zeros(count_observations)
         for cluster in np.unique(labels):
             # only look at non cluster clusters
             this_cluster = X[cluster == y]
