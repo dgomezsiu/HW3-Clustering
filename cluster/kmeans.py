@@ -75,7 +75,7 @@ class KMeans:
             self.centroids = self.get_centroids(mat)
             # update the error and iterator
             error = self.get_error()
-            i += 1
+            iter += 1
 
 
 
